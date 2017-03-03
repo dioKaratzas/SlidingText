@@ -1,0 +1,6 @@
+framework module SlidingText {
+  umbrella header "SlidingText-umbrella.h"
+
+  export *
+  module * { export * }
+}

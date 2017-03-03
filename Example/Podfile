@@ -1,0 +1,6 @@
+use_frameworks!
+target 'SlidingText_Tests' do
+  pod 'SlidingText', :path => '../'
+  
+  
+end
