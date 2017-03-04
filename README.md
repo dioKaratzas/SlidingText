@@ -1,4 +1,8 @@
 # Sliding Text for Swift 3
+[![CocoaPods](https://img.shields.io/cocoapods/v/SlidingText.svg?style=flat)](https://cocoapods.org/?q=slidingtext)
+[![license](https://img.shields.io/github/license/dnKaratzas/SlidingText.svg)](http://cocoadocs.org/?q=slidingtext)
+[![Platform](https://img.shields.io/cocoapods/p/SlidingText.svg?style=flat)](http://cocoadocs.org/?q=slidingtext)
+
 <h3 align="center">
 <img src="https://image.ibb.co/i1TR5a/Sliding_Text.gif"/>
 </h3>
