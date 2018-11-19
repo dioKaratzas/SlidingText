@@ -3,16 +3,16 @@
   "version": "0.1.0",
   "summary": "A short description of SlidingText.",
   "description": "TODO: Add long description of the pod here.",
-  "homepage": "https://github.com/dkaratzas@hotmail.com/SlidingText",
+  "homepage": "https://github.com/Dionysis Karatzas/SlidingText",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
   },
   "authors": {
-    "dkaratzas@hotmail.com": "dkaratzas@impedimed.com"
+    "Dionysis Karatzas": "dnkaratzas@gmail.com"
   },
   "source": {
-    "git": "https://github.com/dkaratzas@hotmail.com/SlidingText.git",
+    "git": "https://github.com/Dionysis Karatzas/SlidingText.git",
     "tag": "0.1.0"
   },
   "platforms": {

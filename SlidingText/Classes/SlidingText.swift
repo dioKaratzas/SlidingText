@@ -2,8 +2,7 @@
 //  SlidingText.swift
 //  SlidingText
 //
-//  Created by Dionisis Karatzas on 01/04/2017.
-//  Copyright © 2017 dnKaratzas. All rights reserved.
+//  Created by Dionisis Karatzas on 19/11/2018.
 //
 
 import UIKit
@@ -100,11 +99,11 @@ class SlidingText : UIView{
     
     private func configureGestures(){
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
-        swipeRight.direction = UISwipeGestureRecognizerDirection.right
+        swipeRight.direction = UISwipeGestureRecognizer.Direction.right
         self.addGestureRecognizer(swipeRight)
         
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
-        swipeLeft.direction = UISwipeGestureRecognizerDirection.left
+        swipeLeft.direction = UISwipeGestureRecognizer.Direction.left
         self.addGestureRecognizer(swipeLeft)
     }
     
@@ -118,10 +117,10 @@ class SlidingText : UIView{
         
         self.addSubview(label)
         
-        let horizontalConstraint = NSLayoutConstraint(item: label, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal, toItem: self, attribute: NSLayoutAttribute.centerX, multiplier: 1, constant: 0)
-        let verticalConstraint = NSLayoutConstraint(item: label, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: self, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 10)
-        let trailingConstraint = NSLayoutConstraint(item: self, attribute: NSLayoutAttribute.trailingMargin, relatedBy: NSLayoutRelation.equal, toItem: label, attribute: NSLayoutAttribute.trailing, multiplier: 1, constant: 0)
-        let leadingConstraint = NSLayoutConstraint(item: label, attribute: NSLayoutAttribute.leading, relatedBy: NSLayoutRelation.equal, toItem: self, attribute: NSLayoutAttribute.leadingMargin, multiplier: 1, constant: 0)
+        let horizontalConstraint = NSLayoutConstraint(item: label, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 1, constant: 0)
+        let verticalConstraint = NSLayoutConstraint(item: label, attribute: NSLayoutConstraint.Attribute.top, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self, attribute: NSLayoutConstraint.Attribute.top, multiplier: 1, constant: 10)
+        let trailingConstraint = NSLayoutConstraint(item: self, attribute: NSLayoutConstraint.Attribute.trailingMargin, relatedBy: NSLayoutConstraint.Relation.equal, toItem: label, attribute: NSLayoutConstraint.Attribute.trailing, multiplier: 1, constant: 0)
+        let leadingConstraint = NSLayoutConstraint(item: label, attribute: NSLayoutConstraint.Attribute.leading, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self, attribute: NSLayoutConstraint.Attribute.leadingMargin, multiplier: 1, constant: 0)
         
         
         NSLayoutConstraint.activate([horizontalConstraint, verticalConstraint, trailingConstraint, leadingConstraint])
@@ -138,8 +137,8 @@ class SlidingText : UIView{
         
         addSubview(pageControl)
         
-        let horizontalConstraint = NSLayoutConstraint(item: pageControl, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal, toItem: self, attribute: NSLayoutAttribute.centerX, multiplier: 1, constant: 0)
-        let verticalConstraint = NSLayoutConstraint(item: self, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: pageControl, attribute: NSLayoutAttribute.bottom, multiplier: 1, constant: 10)
+        let horizontalConstraint = NSLayoutConstraint(item: pageControl, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 1, constant: 0)
+        let verticalConstraint = NSLayoutConstraint(item: self, attribute: NSLayoutConstraint.Attribute.bottom, relatedBy: NSLayoutConstraint.Relation.equal, toItem: pageControl, attribute: NSLayoutConstraint.Attribute.bottom, multiplier: 1, constant: 10)
         
         
         NSLayoutConstraint.activate([horizontalConstraint, verticalConstraint])
@@ -186,7 +185,7 @@ class SlidingText : UIView{
             self.currentIndex = 0
         }
         
-        self.label.pushTransition(duration: 0.5, animationSubType: kCATransitionFromRight)
+        self.label.pushTransition(duration: 0.5, animationSubType: convertFromCATransitionSubtype(CATransitionSubtype.fromRight))
         self.label.text = self.texts[self.currentIndex]
         
         self.pageControl.currentPage = self.currentIndex
@@ -196,33 +195,33 @@ class SlidingText : UIView{
         
         if let swipeGesture = gesture as? UISwipeGestureRecognizer {
             switch swipeGesture.direction {
-            case UISwipeGestureRecognizerDirection.right:
+            case UISwipeGestureRecognizer.Direction.right:
                 timer?.invalidate()
                 currentIndex -= 1
                 if currentIndex < 0{
                     currentIndex = texts.count - 1
                 }
                 
-                label.pushTransition(duration: 0.5, animationSubType: kCATransitionFromLeft)
+                label.pushTransition(duration: 0.5, animationSubType: convertFromCATransitionSubtype(CATransitionSubtype.fromLeft))
                 label.text = self.texts[currentIndex]
                 
                 pageControl.currentPage = currentIndex
                 startOrResumeTimer()
-            case UISwipeGestureRecognizerDirection.down:
+            case UISwipeGestureRecognizer.Direction.down:
                 break
-            case UISwipeGestureRecognizerDirection.left:
+            case UISwipeGestureRecognizer.Direction.left:
                 timer?.invalidate()
                 currentIndex += 1
                 if currentIndex == texts.count{
                     currentIndex = 0
                 }
                 
-                label.pushTransition(duration: 0.5, animationSubType: kCATransitionFromRight)
+                label.pushTransition(duration: 0.5, animationSubType: convertFromCATransitionSubtype(CATransitionSubtype.fromRight))
                 label.text = self.texts[currentIndex]
                 
                 pageControl.currentPage = self.currentIndex
                 startOrResumeTimer()
-            case UISwipeGestureRecognizerDirection.up:
+            case UISwipeGestureRecognizer.Direction.up:
                 break
             default:
                 break
@@ -235,10 +234,23 @@ extension UIView {
     func pushTransition(duration:CFTimeInterval, animationSubType: String) {
         let animation:CATransition = CATransition()
         animation.timingFunction = CAMediaTimingFunction(name:
-            kCAMediaTimingFunctionEaseInEaseOut)
-        animation.type = kCATransitionPush
-        animation.subtype = animationSubType
+            CAMediaTimingFunctionName.easeInEaseOut)
+        animation.type = CATransitionType.push
+        animation.subtype = convertToOptionalCATransitionSubtype(animationSubType)
         animation.duration = duration
-        self.layer.add(animation, forKey: kCATransitionPush)
+        self.layer.add(animation, forKey: convertFromCATransitionType(CATransitionType.push))
     }
+}
+
+fileprivate func convertFromCATransitionSubtype(_ input: CATransitionSubtype) -> String {
+	return input.rawValue
+}
+
+fileprivate func convertToOptionalCATransitionSubtype(_ input: String?) -> CATransitionSubtype? {
+	guard let input = input else { return nil }
+	return CATransitionSubtype(rawValue: input)
+}
+
+fileprivate func convertFromCATransitionType(_ input: CATransitionType) -> String {
+	return input.rawValue
 }

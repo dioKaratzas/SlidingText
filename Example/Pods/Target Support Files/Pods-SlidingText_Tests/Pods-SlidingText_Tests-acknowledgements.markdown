@@ -3,7 +3,7 @@ This application makes use of the following third party libraries:
 
 ## SlidingText
 
-Copyright (c) 2017 dkaratzas@hotmail.com <dkaratzas@impedimed.com>
+Copyright (c) 2018 Dionysis Karatzas <dnkaratzas@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

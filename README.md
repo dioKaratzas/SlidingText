@@ -1,35 +1,30 @@
-# Sliding Text for Swift 3
-[![CocoaPods](https://img.shields.io/cocoapods/v/SlidingText.svg?style=flat)](https://cocoapods.org/?q=slidingtext)
-[![license](https://img.shields.io/github/license/dnKaratzas/SlidingText.svg)](http://cocoadocs.org/?q=slidingtext)
-[![Platform](https://img.shields.io/cocoapods/p/SlidingText.svg?style=flat)](http://cocoadocs.org/?q=slidingtext)
+# SlidingText for Swift
+
+[![Version](https://img.shields.io/cocoapods/v/SlidingText.svg?style=flat)](https://cocoapods.org/pods/SlidingText)
+[![License](https://img.shields.io/cocoapods/l/SlidingText.svg?style=flat)](https://cocoapods.org/pods/SlidingText)
+[![Platform](https://img.shields.io/cocoapods/p/SlidingText.svg?style=flat)](https://cocoapods.org/pods/SlidingText)
 
 <h3 align="center">
 <img src="https://image.ibb.co/i1TR5a/Sliding_Text.gif"/>
 </h3>
 
-## Introduction
+## Requirements
 __Requires iOS 8 or later and Xcode 6.1+__<br/>
 
 ## Installation
-### Manually (~10 seconds)
 
-1. Download and drop 'SlidingText.swift' in your project.  
-2. Congratulations!
-
-### Install via CocoaPods (~10 seconds)
-SlidingText is available through [CocoaPods](http://cocoapods.org). To install
+SlidingText is available through [CocoaPods](https://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
-platform :ios, '8.0'
-use_frameworks!
-pod "SlidingText"
+pod 'SlidingText'
 ```
 
 ## Usage with Storyboard
 In Identity Inspector, connect the UIView to SlidingText Class and set the properties in Attribute Inspector.
 
 <img src="https://image.ibb.co/dJ8Jka/Sliding_Text.png"/>
+
 ```
 Text is separated by the '|n' delimiter
 ```
@@ -63,7 +58,21 @@ myAwesomeViewController.view.addSubView = slidingText
     currentIndex (Get)
 
 ## Author
-This control has been open-sourced by [Dionysis Karatzas](mailto:dkaratzas@hotmail.com). You can hire him for freelance projects, [here](mailto:dkaratzas@hotmail.com).
 
-## License & Other Boring Stuff
-SlidingText is released under the MIT license. See LICENSE for details. If you use the control somewhere, [do let me know](mailto:dkaratzas@hotmail.com). I'd love to see it out in the wild.
+Dionysis Karatzas, dkaratzas@hotmail.com
+
+## License
+
+Copyright 2018 Dionysios Karatzas
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
